@@ -1,38 +1,26 @@
 //
-//  ChannelVC.swift
+//  CreateAccountVC.swift
 //  Smack
 //
-//  Created by Nathaniel Burciaga on 1/25/18.
+//  Created by Nathaniel Burciaga on 2/3/18.
 //  Copyright © 2018 Nathaniel Burciaga. All rights reserved.
 //
 
 import UIKit
 
-class ChannelVC: UIViewController {
+class CreateAccountVC: UIViewController {
 
-    //Outlets
-    
-    @IBOutlet weak var loginBtn: UIButton!
-    
-    //Actions
-    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {}
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        self.revealViewController().rearViewRevealWidth = self.view.frame.width - 60
-        
     }
 
     
     
-    @IBAction func loginBtnPressed(_ sender: Any) {
-        performSegue(withIdentifier: TO_LOGIN, sender: nil)
+    @IBAction func closePressed(_ sender: Any) {
+        performSegue(withIdentifier: UNWIND, sender: nil)
     }
-    
     
     
     
