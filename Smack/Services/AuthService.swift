@@ -92,9 +92,9 @@ class AuthService {
             // Using SwiftyJson
                 guard let data = response.data else { return }
                 do {
-                let json = try JSON(data: data)
-                self.userEmail = json["user"].stringValue
-                self.authToken = json["token"].stringValue
+                    let json = try JSON(data: data)
+                    self.userEmail = json["user"].stringValue
+                    self.authToken = json["token"].stringValue
                 } catch {
                     debugPrint(error)
                 }
@@ -110,7 +110,53 @@ class AuthService {
     }
     
     
-    
+    func createUser(name: String, email: String, avatarName: String, avatarColor: String, completion: @escaping CompletionHandler) {
+        
+        let lowerCaseEmail = email.lowercased()
+
+        let body: [String: Any] = [
+            "name" : name,
+            "email": lowerCaseEmail,
+            "avatarName": avatarName,
+            "avatarColor": avatarColor
+        ]
+        
+        //Auth Header with Token
+        let header = [
+            "Authorization": "Bearer \(AuthService.instance.authToken)",
+            "Content-Type": "application/json; charset=utf-8"
+        ]
+        
+        //creating Request with header
+        Alamofire.request(URL_USER_ADD, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+            
+            if response.result.error == nil {
+                //parsing JSON
+                do {
+                guard let data = response.data else { return }
+                    //setting data
+                    let json = try JSON(data: data)
+                    let id = json["_id"].stringValue
+                    let color = json["avatarColor"].stringValue
+                    let avatarName = json["avatarName"].stringValue
+                    let email = json["email"].stringValue
+                    let name = json["name"].stringValue
+                    
+                    //link parsed data to UserDataService
+                    UserDataService.instance.setUserDataService(id: id, color: color, avatarName: avatarName, email: email, name: name)
+                    completion(true)
+                    } catch {
+                        debugPrint(error)
+                        }
+            } else {
+                completion(false)
+                debugPrint(response.result.error as Any)
+            }
+            
+            
+        }
+        
+    }
     
     
     
