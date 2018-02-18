@@ -7,7 +7,7 @@
 // 
 
 import Foundation
-import Alamofire
+import Alamofire //Connect to backend
 import SwiftyJSON //easy way to work with JSON
 
 class AuthService {
@@ -109,7 +109,7 @@ class AuthService {
         
     }
     
-    
+    //create User account
     func createUser(name: String, email: String, avatarName: String, avatarColor: String, completion: @escaping CompletionHandler) {
         
         let lowerCaseEmail = email.lowercased()
