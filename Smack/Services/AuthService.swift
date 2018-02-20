@@ -128,7 +128,7 @@ class AuthService {
             if response.result.error == nil {
                 //parsing JSON
                 do {
-                guard let data = response.data else { return }
+                    guard let data = response.data else { return }
                     //setting data
                     let json = try JSON(data: data)
                     let id = json["_id"].stringValue

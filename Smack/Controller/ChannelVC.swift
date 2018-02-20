@@ -27,6 +27,8 @@ class ChannelVC: UIViewController {
         self.revealViewController().rearViewRevealWidth = self.view.frame.width - 60
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        
+        setupChannelInfo()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -35,7 +37,21 @@ class ChannelVC: UIViewController {
     
     @objc func userDataDidChange(_ notif: Notification) {
        setUpUserInfo()
+        setupChannelInfo()
     }
+    
+    func setupChannelInfo() {
+        if AuthService.instance.isLoggedIn {
+            MessageService.instance.findAllChannel { (succes) in
+               // self.channelsTableView.reloadData()
+            }
+        } else {
+            MessageService.instance.channels = [Channel]()
+            //channelsTableView.reloadData()
+        }
+    }
+    
+
     
     
     func setUpUserInfo() {

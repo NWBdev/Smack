@@ -33,6 +33,10 @@ class ChatVC: UIViewController {
                 
             })
         }
+        
+        MessageService.instance.findAllChannel { (success) in
+            
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
