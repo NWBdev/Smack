@@ -8,12 +8,11 @@
 
 import UIKit
 
-class ChannelVC: UIViewController {
+class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     //Outlets
-    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loginBtn: UIButton!
-    
     @IBOutlet weak var userImg: CircleImage!
     //Actions
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {}
@@ -21,8 +20,9 @@ class ChannelVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        // setting table view
+        tableView.delegate = self
+        tableView.dataSource = self
         
         self.revealViewController().rearViewRevealWidth = self.view.frame.width - 60
         
@@ -99,4 +99,34 @@ class ChannelVC: UIViewController {
     }
     */
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as? ChannelCell {
+            let channel = MessageService.instance.channels[indexPath.row]
+            cell.configureCell(channel: channel)
+            return cell
+        } else {
+            return UITableViewCell()
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MessageService.instance.channels.count
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
