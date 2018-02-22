@@ -28,7 +28,15 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         
-        setupChannelInfo()
+        //Socket Service
+        SocketService.instance.getChannel { (success) in
+            if success {
+                self.tableView.reloadData()
+            }
+        }
+        
+        
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -47,7 +55,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     func setupChannelInfo() {
         if AuthService.instance.isLoggedIn {
-            MessageService.instance.findAllChannel { (succes) in
+            MessageService.instance.findAllChannel { (success) in
                // self.channelsTableView.reloadData()
             }
         } else {
