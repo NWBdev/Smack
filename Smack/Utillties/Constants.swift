@@ -13,7 +13,7 @@ typealias CompletionHandler = (_ Success: Bool) -> ()
 
 
 // URL Constants
-let BASE_URL = "https://chattychatjb.herokuapp.com/v1/" // test channels "https://chattychatjb.herokuapp.com/v1/" and the orginal:"https://chattychatnb.herokuapp.com/v1/"
+let BASE_URL = "https://chattychatnb.herokuapp.com/v1/" // test channels "https://chattychatjb.herokuapp.com/v1/" and the orginal:"https://chattychatnb.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)account/register"
 let URL_LOGIN = "\(BASE_URL)account/login"
 let URL_USER_ADD = "\(BASE_URL)user/add"
@@ -25,6 +25,9 @@ let smackPurple = #colorLiteral(red: 0.3254901961, green: 0.4196078431, blue: 0.
 
 // Notification Constants
 let NOTIF_USER_DATA_DID_CHANGE = Notification.Name("notifUserDataChange")
+let NOTIF_CHANNELS_LOADED = Notification.Name("channelsLoaded")
+let NOTIF_CHANNEL_SELECTED = Notification.Name("channelSelected")
+
 
 
 
