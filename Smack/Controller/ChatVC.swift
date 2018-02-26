@@ -14,11 +14,17 @@ class ChatVC: UIViewController {
     //Outlets
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var channelNameLbl: UILabel!
+    @IBOutlet weak var messageTxtBox: UITextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //bind view up when keyboard for typing messages
+        view.bindToKeyboard()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ChatVC.handleTap))
+        view.addGestureRecognizer(tap)
+        
         // Do any additional setup after loading the view.
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         
@@ -77,6 +83,10 @@ class ChatVC: UIViewController {
         updateWithChannel()
     }
     
+    @objc func handleTap() {
+        view.endEditing(true)
+    }
+    
     
     func updateWithChannel() {
         let channelName = MessageService.instance.selectedChannel?.channelTitle ?? "" //if it cant find a option set to empty string ?? ""
@@ -84,6 +94,20 @@ class ChatVC: UIViewController {
         getMessages()
     }
     
+    @IBAction func sendMessagePressed(_ sender: Any) {
+        if AuthService.instance.isLoggedIn {
+            guard let channelId = MessageService.instance.selectedChannel?.id else {return}
+            guard let message = messageTxtBox.text else { return }
+            
+            SocketService.instance.addMessage(messageBody: message, userId: UserDataService.instance.id, channelId: channelId, completion: { (success) in
+                if success {
+                    //make empty message and resigning it!
+                    self.messageTxtBox.text = ""
+                    self.messageTxtBox.resignFirstResponder()
+                }
+            })
+        }
+    }
     
     
     override func didReceiveMemoryWarning() {

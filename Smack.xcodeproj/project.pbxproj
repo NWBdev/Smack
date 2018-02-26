@@ -24,6 +24,7 @@
 		09410BB9203E5A1B0042C9D7 /* AddChannelVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09410BB7203E5A1B0042C9D7 /* AddChannelVC.xib */; };
 		09410BBB203E699A0042C9D7 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09410BBA203E699A0042C9D7 /* SocketService.swift */; };
 		0968084E2041442B00DCC896 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968084D2041442B00DCC896 /* Message.swift */; };
+		096808502043EE4E00DCC896 /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968084F2043EE4E00DCC896 /* KeyboardBoundView.swift */; };
 		096ABB2220311ED6004FD102 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096ABB2120311ED6004FD102 /* RoundedButton.swift */; };
 		0998A2A2203563BB004D23DC /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998A2A1203563BB004D23DC /* UserDataService.swift */; };
 		09B363032017194E00E57A41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B363022017194E00E57A41 /* AppDelegate.swift */; };
@@ -54,6 +55,7 @@
 		09410BB7203E5A1B0042C9D7 /* AddChannelVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddChannelVC.xib; sourceTree = "<group>"; };
 		09410BBA203E699A0042C9D7 /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
 		0968084D2041442B00DCC896 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		0968084F2043EE4E00DCC896 /* KeyboardBoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardBoundView.swift; path = "../../../../../Downloads/Smack Assets/KeyboardBind View/KeyboardBoundView.swift"; sourceTree = "<group>"; };
 		096ABB2120311ED6004FD102 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		0998A2A1203563BB004D23DC /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
 		09B362FF2017194E00E57A41 /* Smack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smack.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +183,7 @@
 				0938A51B203941C400C37E23 /* AvatarCell.swift */,
 				0938A51D20396B8700C37E23 /* CircleImage.swift */,
 				09410BB4203D5FC00042C9D7 /* ChannelCell.swift */,
+				0968084F2043EE4E00DCC896 /* KeyboardBoundView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				096808502043EE4E00DCC896 /* KeyboardBoundView.swift in Sources */,
 				09410BBB203E699A0042C9D7 /* SocketService.swift in Sources */,
 				0938A521203A932E00C37E23 /* ProfileVC.swift in Sources */,
 				09410BB5203D5FC00042C9D7 /* ChannelCell.swift in Sources */,
